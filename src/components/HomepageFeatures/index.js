@@ -4,32 +4,34 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Facile à utiliser',
+    Svg: require('@site/static/img/planner.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Il est fait pour créer rapidement un calendrier. Il offre une interface intuitive, permettant de naviguer facilement entre les dates et événements.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Personnalisable',
+    Svg: require('@site/static/img/planner.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        {/* Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
+        ahead and move your docs into the <code>docs</code> directory. */}
+        Il permet d'adapter l'apparence et les fonctionnalités du
+        calendrier à leurs besoins spécifiques
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Flexible',
+    Svg: require('@site/static/img/planner.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        {/* Extend or customize your website layout by reusing React. Docusaurus can
+        be extended while reusing the same header and footer. */}
+       Il peut être intégré dans divers projets et plateformes.
       </>
     ),
   },
