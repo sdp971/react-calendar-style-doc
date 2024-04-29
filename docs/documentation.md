@@ -73,7 +73,11 @@ Cet élément permet d'afficher un calendrier en mois et jour, qui permet de sé
 
 <br/><br/>
 
-### Code:
+
+![Example banner](../static/img/CalendarCases.png)
+
+
+#### Code:
 
 ```js
 import { CalendarCases } from "react-calendar-style";
@@ -113,7 +117,13 @@ Cet élément permet d'afficher les jours de la semaine en français ou en angla
 
 <br/><br/>
 
-### Code:
+
+![Example banner](../static/img/WeekDaysCases.png)
+
+<br/><br/>
+
+
+#### Code:
 
 ```js
 import { WeekDaysCases } from "react-calendar-style";
@@ -152,10 +162,15 @@ Il permet à l’utilisateur de sélectionner facilement une date via un sélect
 <br/><br/>
 
 
+![Example banner](../static/img/InputDate.png)
+
+
 
 <br/><br/>
 
-### Code:
+
+
+#### Code:
 
 ```js
 import { InputDate } from "react-calendar-style";
@@ -203,6 +218,8 @@ l'utilisateur a le choix de garder les images déjà prédéfinies ou de choisir
 <br/><br/>
 
 
+![Example banner](../static/img/SaisonImg.png)
+
 
 <br/><br/>
 
@@ -231,10 +248,27 @@ function App() {
 
 <br/>
 
-Cet élément permet d'afficher une journee de la semaine et les avoir toutes les heures de la journee selectionnee
-l'utilisateur a le choix passer d'une journee a une autre en faisant appel au composant BTN
+Cet élément permet d'afficher une journée de la semaine et d'avoir toutes les heures de la journée selectionnée L'utilisateur a le choix passer d'une journee a une autre en faisant appel au composant Btn.
+<br/>
 
-### Code:
+
+
+| Nom de la propriété | Description                             | Valeur par défaut        | Exemple    |
+| ------------------- | --------------------------------------- | ------------------------ | ---------- |
+| height              | contrôle la hauteur                     | `500px` | `"500px"`  |
+| padding              | contrôle l'espacement intérieur                    | `5px 20px` | `5px 20px`   |
+|value              | contrôle la date                    | `new Date()` | `new Date()` |
+| setValue     | contrôle de de la date appelée | `date`                | `date`      |
+
+<br/><br/>
+
+
+![Example banner](../static/img/GridDay.png)
+
+
+<br/><br/>
+
+#### Code:
 
 ```js
 import { GrilleDay } from "react-calendar-style";
@@ -263,8 +297,14 @@ Cet élément permet d'afficher les jours de la semaine et toutes les heures. L'
 |value              | contrôle la date                    | `new Date()` | `new Date()` |
 | setValue     | contrôle de de la date appelée | `date`                | `date`      |
 
+<br/><br/>
 
-### Code:
+
+![Example banner](../static/img/GridWeek.png)
+
+
+<br/><br/>
+#### Code:
 
 ```js
 import { GrilleWeek } from "react-calendar-style";
@@ -292,8 +332,17 @@ Cet élément permet de faire un switch avec le toggle(boutton Day et Week) entr
 |value              | contrôle la date                    | `new Date()` | `new Date()` |
 | setValue     | contrôle de de la date appelée | `date`                | `date`      |
 
+<br/><br/>
 
-### Code:
+
+
+![Example banner](../static/img/grille.gif)
+
+
+
+<br/><br/>
+
+#### Code:
 
 ```js
 import { Grille } from "react-calendar-style";
