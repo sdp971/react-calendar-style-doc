@@ -58,7 +58,7 @@ function App() {
 
 <br/>
 
-Cet élément permet d'afficher un calendrier en mois et jour.
+Cet élément permet d'afficher un calendrier en mois et jour, qui permet de sélectionner une date, nous retournant des données sous format JSON, afin de pouvoir utiliser l'information si besoin.
 
 | Nom de la propriété | Description                                                | Valeur par défaut        | Exemple           |
 | ------------------- | ---------------------------------------------------------- | ------------------------ | ----------------- |
@@ -76,50 +76,18 @@ Cet élément permet d'afficher un calendrier en mois et jour.
 ### Code:
 
 ```js
-export function CalendarCases({}) {
-  const [selectedDate, setSelectedDate] = useState(null);
+import { CalendarCases } from "react-calendar-style";
 
-  const handleSelect = (event) => {
-    if (event.target.id === "day") {
-      setSelectedDate(
-        new Date(
-          currentYear,
-          currentMonth,
-          event.target.getAttribute("data-day")
-        )
-      );
-    }
-  };
-
+function App() {
   return (
-    <section>
-      <div className="header">
-        <button onClick={prevMonth}>{" < "}</button>
-        <p>
-          {months[currentMonth]} {currentYear}
-        </p>
-        <button onClick={nextMonth}>{" > "}</button>
-      </div>
-      <div className="monthContainer" onClick={handleSelect}>
-        {range(1, getNumberOfDaysInMonth(currentYear, currentMonth) + 1).map(
-          (day, i) => (
-            <p
-              id="day"
-              data-day={day}
-              key={i}
-              className={
-                selectedDate?.getTime() ===
-                new Date(currentYear, currentMonth, day).getTime()
-                  ? "active"
-                  : ""
-              }
-            >
-              {day}
-            </p>
-          )
-        )}
-      </div>
-    </section>
+    <>
+      <CalendarCases
+        language="fr"
+        color="red"
+        fontFamily="Roboto"
+        backgroundColor="white"
+      />
+    </>
   );
 }
 ```
@@ -148,12 +116,12 @@ Cet élément permet d'afficher les jours de la semaine en français ou en angla
 ### Code:
 
 ```js
-export default function WeekDaysCases({}) {
+import { WeekDaysCases } from "react-calendar-style";
+
+function App() {
   return (
-    <div className="wrapper-days">
-      {english
-        ? days.map((days, i) => <div key={i}>{days}</div>)
-        : daysFr.map((days, i) => <div key={i}>{days}</div>)}
+    <div className="app">
+      <WeekDaysCases />
     </div>
   );
 }
@@ -190,22 +158,24 @@ Il permet à l’utilisateur de sélectionner facilement une date via un sélect
 ### Code:
 
 ```js
-function InputDate({}) {
-  const handleChange = (e) => {
-    setValue(new Date(e.target.value));
-  };
+import { InputDate } from "react-calendar-style";
 
-  const dateValue =
-    value instanceof Date ? value.toISOString().split("T")[0] : value;
+function App() {
+  const currentDate = new Date();
+  const [date, setDate] = useState(currentDate);
 
   return (
-    <div>
-      <input
-        className="input"
-        type="date"
-        onChange={(e) => handleChange(e)}
-        value={dateValue}
-        style={styleElement}
+    <div className="app">
+      <InputDate
+        value={date}
+        setValue={setDate}
+        height="40px"
+        width="30%"
+        background="white"
+        color="green"
+        fontFamily="Arial"
+        border="3px solid grey"
+        borderRadius="5px"
       />
     </div>
   );
@@ -237,33 +207,19 @@ l'utilisateur a le choix de garder les images déjà prédéfinies ou de choisir
 <br/><br/>
 
 ```js
-function SaisonImg({
-}) {
+import { InputDate, SaisonImg } from "react-calendar-style";
+function App() {
+  const currentDate = new Date();
+  const [date, setDate] = useState(currentDate);
 
-
-  const monthDayFormat = (dateCurrent) => {
-    const maDate = new Date(dateCurrent);
-    return (maDate?.getMonth() + 1) * 100 + maDate?.getDate();
-  };
-  const setSaisons = (dateSais) => {
-    if (
-      monthDayFormat(dateSais) >= monthDayFormat(saisDate.printemt) &&
-      monthDayFormat(dateSais) < monthDayFormat(saisDate.ete)
-    ) {
-      return urlsImg.img1;
-    }
-    if (
-      monthDayFormat(dateSais) >= monthDayFormat(saisDate.ete) &&
-      monthDayFormat(dateSais) < monthDayFormat(saisDate.automne)
-    ) {
-      return urlsImg.img2;
-    }
-
-    if (....)
-  };
   return (
-    <div>
-      <Image src={setSaisons(date)} style={styleElement} />
+    <div className="app">
+      <InputDate value={date} setValue={setDate} /> //utiliser InputDate pour la
+      modification d'image
+      <SaisonImg
+        date={`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
+        width="30%"
+      />
     </div>
   );
 }
@@ -277,6 +233,80 @@ function SaisonImg({
 
 Cet élément permet d'afficher une journee de la semaine et les avoir toutes les heures de la journee selectionnee
 l'utilisateur a le choix passer d'une journee a une autre en faisant appel au composant BTN
+
+### Code:
+
+```js
+import { GrilleDay } from "react-calendar-style";
+
+function App() {
+  return (
+    <div className="app">
+      <GrilleDay />
+    </div>
+  );
+}
+```
+<br/><br/>
+
+### GrilleWeek
+
+<br/>
+
+Cet élément permet d'afficher les jours de la semaine et toutes les heures. L'utilisateur a le choix passer d'une semaine a une autre en faisant appel au composant Btn.
+
+
+| Nom de la propriété | Description                             | Valeur par défaut        | Exemple    |
+| ------------------- | --------------------------------------- | ------------------------ | ---------- |
+| height              | contrôle la hauteur                     | `500px` | `"400px"`  |
+| padding              | contrôle l'espacement intérieur                    | `5px 32px` | `5px 32px`   |
+|value              | contrôle la date                    | `new Date()` | `new Date()` |
+| setValue     | contrôle de de la date appelée | `date`                | `date`      |
+
+
+### Code:
+
+```js
+import { GrilleWeek } from "react-calendar-style";
+
+function App() {
+  return (
+    <div className="app">
+      <GrilleWeek />
+    </div>
+  );
+}
+```
+<br/><br/>
+
+
+### Grille
+
+<br/>
+
+Cet élément permet de faire un switch avec le toggle(boutton Day et Week) entre les jours de la semaine et toutes les heures, ainsi que les une une journee avec les heures. <br/>Ce composant regroupe plusieurs composnat pour son bon fonctionnement: GridDay, GridWeek et Btn.
+
+| Nom de la propriété | Description                             | Valeur par défaut        | Exemple    |
+| ------------------- | --------------------------------------- | ------------------------ | ---------- |
+| height              | contrôle la hauteur                     | `500px` | `"400px"`  |
+|value              | contrôle la date                    | `new Date()` | `new Date()` |
+| setValue     | contrôle de de la date appelée | `date`                | `date`      |
+
+
+### Code:
+
+```js
+import { Grille } from "react-calendar-style";
+
+function App() {
+  return (
+    <div className="app">
+      <Grille />
+    </div>
+  );
+}
+```
+<br/><br/>
 
 
 
